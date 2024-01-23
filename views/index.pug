@@ -1,0 +1,18 @@
+//- html
+head
+    title= title
+body
+    h1= message
+    div Pug - node template engine
+        #container.col
+            if youAreUsingPug
+                p You are amazing
+            else
+                span Get on it!
+            div
+                Pug is a terse and simple templating language with a 
+                strong focus on performance and powerful features.
+    ul
+        each val in ['yes', 'no']
+            li= val
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertaining EJS Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #sarcasmMessage {
+            display: none;
+            color: #ff4500;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to the Slightly Sarcastic World of EJS</h1>
+
+    <p>Prepare yourself for a thrilling experience as we explore the wonders of EJS. This page is so advanced that it
+        makes a toaster jealous.</p>
+
+    <p>Feeling brave? Click the button below to reveal a sarcastic message:</p>
+
+    <button onclick="toggleSarcasm()">Toggle Sarcasm</button>
+
+    <p id="sarcasmMessage">Oh, you clicked the button? How utterly surprising. Brace yourself for a revelation: this
+        message is dripping with sarcasm.</p>
+
+    <script>
+        function toggleSarcasm() {
+            var sarcasmMessage = document.getElementById("sarcasmMessage");
+            sarcasmMessage.style.display = (sarcasmMessage.style.display === "none") ? "block" : "none";
+        }
+    </script>
+
+</body>
+
+</html>
