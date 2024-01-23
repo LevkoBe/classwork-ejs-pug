@@ -1,6 +1,21 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+
+const mongoConnection = "mongodb+srv://lbeniakh:6YdKpcWoP56wFCnW@cluster0.tdh5js4.mongodb.net/?retryWrites=true&w=majority";
+
+const PORT = 3400;
+
+const start = async() => {
+    await mongoose.connect(mongoConnection);
+
+    app.listen(PORT, () => {
+        console.log(`Server is running at "http://localhost:${PORT}"`);
+    })
+}
+
+start();
 
 const routes = require('./routes/homeRoutes');
 
@@ -22,7 +37,3 @@ app.use('/pug2', (req, res) => {
 });
 
 
-const PORT = 3400;
-app.listen(PORT, () => {
-    console.log(`Server is running at "http://localhost:${PORT}"`);
-})
