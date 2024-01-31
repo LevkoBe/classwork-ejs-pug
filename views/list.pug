@@ -19,6 +19,26 @@ html
         border: 1px solid #ddd;
         background-color: #f9f9f9;
         border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+      }
+      .cat-info {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .copy-button {
+        cursor: pointer;
+        background-color: #4caf50;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        margin-top: 5px;
+      }
+      .copy-button:hover {
+        background-color: #45a049;
       }
 
   body
@@ -27,6 +47,19 @@ html
       each item in items
         li
           strong= item.name
-          span(style='margin-left: 10px;')= ": " + item.age + " y. o."
+          .cat-info
+            span(style='margin-left: 10px;')= ": " + item.age + " y. o."
+            button.copy-button(onclick=`copyToClipboard('${item._id}')`) Copy ID
     h1 Home page: 
       a(href="/home") home
+
+script.
+  function copyToClipboard(id) {
+    const el = document.createElement('textarea');
+    el.value = id;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('ID copied to clipboard: ' + id);
+  }

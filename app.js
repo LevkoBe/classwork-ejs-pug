@@ -23,12 +23,6 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes/homeRoutes'));
-app.use('/pug', (req, res) => {
-    res.render('index', {title: 'Hey', message: "Hello there!"})
-});
 app.use('/form', require('./routes/formRoutes'));
-app.use('/pug2', (req, res) => {
-    res.render('index', {title: 'Hey 2', message: "Hello there!", youAreUsingPug: true})
-});
 
 

@@ -1,0 +1,36 @@
+html
+  head
+    title Cat Details
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        color: #333;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+      p {
+        color: #555;
+      }
+
+  body
+    h1 Cat Details
+    #container
+      if cat
+        p Cat Name: #{cat.name}
+        p Cat Age: #{cat.age}
+      else
+        p Cat not found
+      a(href="/") Back to List of Cats
