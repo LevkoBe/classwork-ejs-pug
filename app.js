@@ -17,21 +17,17 @@ const start = async() => {
 
 start();
 
-const routes = require('./routes/homeRoutes');
-
 // set ejs / 
 // app.set('view engine', 'ejs');
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/', routes);
+app.use('/', require('./routes/homeRoutes'));
 app.use('/pug', (req, res) => {
     res.render('index', {title: 'Hey', message: "Hello there!"})
 });
-app.use('/form', (req, res) => {
-    res.render('form')
-});
+app.use('/form', require('./routes/formRoutes'));
 app.use('/pug2', (req, res) => {
     res.render('index', {title: 'Hey 2', message: "Hello there!", youAreUsingPug: true})
 });

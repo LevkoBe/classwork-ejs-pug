@@ -1,21 +1,47 @@
-//- html
-head
-    title= title
-body
-    h1= message
-    div Pug - node template engine
-        #container.col
-            a(href="/form") Form
-            br
-            hl
-            if youAreUsingPug
-                p You are amazing
-            else
-                span Get on it!
-            div
-                Pug is a terse and simple templating language with a 
-                strong focus on performance and powerful features.
-    ul
-        each val in ['yes', 'no']
-            li= val
+html
+  head
+    title Cat Page
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        color: #333;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #4caf50;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+      }
+      a:hover {
+        background-color: #45a049;
+      }
 
+  body
+    h1= message
+    div(class="col")
+      if name
+        | You've successfully created a cat "#{name}" with an age of #{age} years.
+  div(id="container" class="col")
+    a(href="/form") Create new cat
+    | Here you can use the given form to create a new entity of a cat.
+    br
+    a(href="/") List of all the cats
+    | And this is for listing all the cats available
