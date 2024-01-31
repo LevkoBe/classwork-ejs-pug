@@ -31,6 +31,23 @@ const homeController = {
             console.error('Error fetching cat by ID:', error);
             res.status(500).send('Try and enter another id');
         }
+    },
+    delWithID: async (req, res) => {
+        const catId = req.params.id;
+
+        try {
+            const theCat = await Cat.findById(catId);
+
+            if (!theCat) {
+                return res.status(404).send('Cat not found');
+            }
+
+            await Cat.findByIdAndDelete(catId);
+            res.redirect('/');
+        } catch (error) {
+            console.error('Error deleting cat by ID:', error);
+            res.status(500).send('Try and enter another id');
+        }
     }
 }
 
