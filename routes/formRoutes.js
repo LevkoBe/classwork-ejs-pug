@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const homeController = require('../controllers/homeController');
+const formController = require('../controllers/formController');
 
-router.get('/', homeController.getForm); // Q-question: is this "/form", or just "/"
-router.get('/form', homeController.getForm); // Q-question: is this "/form", or just "/"
-router.post('/post', homeController.createCat); // Q-question: is this "/form/post", or just "/post"
+router.get('/', formController.getForm); // Q-question: is this "/form", or just "/"
+router.get('/form', formController.getForm); // Q-question: is this "/form", or just "/"
+router.post('/cat', formController.createCat); // Q-question: is this "/form/post", or just "/post"
 
 module.exports = router;
