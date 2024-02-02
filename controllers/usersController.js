@@ -1,5 +1,6 @@
-const { saveUserInDatabase, updateUserInDatabase } = require('../handlers/users');
+const { saveUserInDatabase, updateUserInDatabase, updateUserfieldInDatabase } = require('../handlers/users');
 const { User } = require("../models");
+
 
 async function getUserListController(req, res) {
     try {
@@ -58,6 +59,14 @@ function putUserController(req, res) {
         .catch(() => res.send('user NOT updated'));
 }
 
+function patchUserController(req, res) {
+    const userId = req.params.id;
+    newName = req.body.name | "New";
+    updateUserfieldInDatabase(userId, newName)
+        .then(() => res.redirect(`/users/${userId}`))
+        .catch(() => res.send('user NOT updated'));
+}
+
 async function deleteUserController(req, res) {
     const userId = req.params.id;
     await User.deleteOne({ _id: userId });
@@ -72,4 +81,5 @@ module.exports = {
     putUserController,
     deleteUserController,
     getUserUpdateFormController,
+    patchUserController,
 };

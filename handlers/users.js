@@ -15,6 +15,15 @@ function saveUserInDatabase(name, lastname, email, password) {
     }
 }
 
+ async function updateUserfieldInDatabase(id, username) {
+    try {
+        return await User.findOneAndUpdate({ _id: id }, { $set: {name: username} });
+    } catch (error) {
+        console.error('error', error);
+        return false;
+    }
+}
+
 async function deleteUserInDatabase(id) {
     const user = await User.deleteOne({ _id: id });
     return user.save();
@@ -23,5 +32,6 @@ async function deleteUserInDatabase(id) {
 module.exports = {
     saveUserInDatabase: saveUserInDatabase,
     updateUserInDatabase,
-    deleteUserInDatabase
+    deleteUserInDatabase,
+    updateUserfieldInDatabase,
 };

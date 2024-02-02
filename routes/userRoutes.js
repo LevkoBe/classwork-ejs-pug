@@ -4,6 +4,7 @@ const userController = require('../controllers/usersController');
 router.get('/', userController.getUserListController);
 router.get('/new', userController.getUserFormController);
 router.get('/:id', userController.getUserByIdController);
+router.patch('/:id', userController.patchUserController);
 router.get('/:id/update', userController.getUserUpdateFormController);
 
 router.put('/:id', userController.putUserController);
