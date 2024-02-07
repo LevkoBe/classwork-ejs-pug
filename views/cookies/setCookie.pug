@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    title Set Cookie
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type='text'],
+      input[type='checkbox'] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      input[type='submit'] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[type='submit']:hover {
+        background-color: #45a049;
+      }
+
+  body
+    h1 Set Cookie
+    form(action='/cookies', method='POST')
+      label(for='name') Name:
+      input(type='text', name='name', required)
+      br
+      label(for='value') Value:
+      input(type='text', name='value', required)
+      br
+      label(for='httpOnly') HttpOnly:
+      input(type='checkbox', name='httpOnly')
+      br
+      input(type='submit', value='Set Cookie')

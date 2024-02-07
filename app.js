@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const methodOverrride = require('method-override')
 const app = express();
 
@@ -18,17 +19,19 @@ const start = async() => {
 
 start();
 
-// app.set('view engine', 'ejs');
 app.set('view engine', 'pug');
-// app.set('views', 'views');
-app.set('views', ['views', 'views/user']);
+app.set('views', ['views', 'views/user', 'views/cookies']);
 
+app.use(cookieParser());
 app.use(methodOverrride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.use('/', require('./routes/homeRoutes'));
 app.use('/cats', require('./routes/catsRoutes'));
 app.use('/form', require('./routes/formRoutes'));
 app.use('/users', require('./routes/userRoutes'));
+app.use('/cookies', require('./routes/cookieRoutes'))
 app.use('/*', require('./routes/homeRoutes'));
 
 
+// http: //localhost:3400/cookies/set/nickname=Joe&httpOnly=true
