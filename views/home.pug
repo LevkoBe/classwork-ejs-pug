@@ -1,0 +1,45 @@
+html
+  head
+    title Cat Page
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        color: #333;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #4caf50;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+      }
+      a:hover {
+        background-color: #45a049;
+      }
+
+  body
+    h1 This is home page. From here you can go to 
+    a(href="/users") Users page
+    | And add, edit, or create new users
+    br
+    | or to
+    a(href="/cats") Cats page
+    | To add, edit, or create new cats
+    br
