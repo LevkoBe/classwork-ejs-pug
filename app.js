@@ -34,4 +34,4 @@ app.use('/cookies', require('./routes/cookieRoutes'))
 app.use('/*', require('./routes/homeRoutes'));
 
 
-// http: //localhost:3400/cookies/set/nickname=Joe&httpOnly=true
+// http: //localhost:3400/cookies/set?nickname=Joe&httpOnly=true
