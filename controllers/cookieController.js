@@ -1,3 +1,5 @@
+const { setCookie, getCookie } = require('../helpers/cookieHelper');
+
 const cookieController = {
     getIndexPage: (req, res) => {
         let cookies;
@@ -9,24 +11,15 @@ const cookieController = {
     setHttpCookie: (req, res) => {
         try {
             const cookiesSettings = Object.entries(req.query);
-            const name = cookiesSettings[0][0];
-            const value = cookiesSettings[0][1];
-            let httpOnly = cookiesSettings.length > 1 && cookiesSettings[1][1] === 'true';
-
-            res.cookie(name, value, {httpOnly: !!httpOnly});
+            setCookie(res, cookiesSettings);
             res.redirect("/cookies")
         } catch {
-            res.render('error', {message: "Can't set the cookie."});
+            res.render('error', {message: "404: Can't add the cookie."});
         }
     },
     getHttpCookie: (req, res) => {
-        const cookieName = req.params.name;
         try {
-            const cookieValue = req.cookies[cookieName];
-            if (cookieValue == "" || !cookieValue) {
-                throw error("Error");
-            }
-            res.render('getCookie', {cookieName, cookieValue});
+            getCookie(req, res);
         } catch {
             res.render('error', {message: "404: Can't find the cookie."});
         }
