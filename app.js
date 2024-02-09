@@ -13,7 +13,7 @@ const start = async() => {
     await mongoose.connect(mongoConnection);
 
     app.listen(PORT, () => {
-        console.log(`Server is running at "http://localhost:${PORT}"`);
+        console.log(`Server is running at "http://127.0.0.1:${PORT}"`);
     })
 }
 
@@ -34,4 +34,8 @@ app.use('/cookies', require('./routes/cookieRoutes'))
 app.use('/*', require('./routes/homeRoutes'));
 
 
-// http: //localhost:3400/cookies/set?nickname=Joe&httpOnly=true
+// http://127.0.0.1:3400/cookies/set?nickname=Joe&httpOnly=true
+// http://127.0.0.1:3400/cookies/set?newOne=someValue
+// http://127.0.0.1:3400/cookies/set?oneMore=Great&httpOnly=false
+// http://127.0.0.1:3400/cookies/get/oneMore
+// http://127.0.0.1:3400/cookies/get/nonExisting

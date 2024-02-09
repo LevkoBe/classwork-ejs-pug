@@ -8,17 +8,13 @@ const cookieController = {
     },
     setHttpCookie: (req, res) => {
         try {
-            const { name } = req.params;
-            console.log(name);
-            const { value } = req.query.name;
-            const { httpOnly } = req.query.httpOnly;
-            console.log(req.query.name, "... ", req.query);
-            res.cookie(name, value, { httpOnly: !!httpOnly });
-            let cookies;
-            if (req.cookies) {
-              cookies = Object.keys(req.cookies).map(name => ({name}));
-            }
-            res.render('allCookies', {cookies});
+            const cookiesSettings = Object.entries(req.query);
+            const name = cookiesSettings[0][0];
+            const value = cookiesSettings[0][1];
+            let httpOnly = cookiesSettings.length > 1 && cookiesSettings[1][1] === 'true';
+
+            res.cookie(name, value, {httpOnly: !!httpOnly});
+            res.redirect("/cookies")
         } catch {
             res.render('error', {message: "Can't set the cookie."});
         }
@@ -27,9 +23,12 @@ const cookieController = {
         const cookieName = req.params.name;
         try {
             const cookieValue = req.cookies[cookieName];
+            if (cookieValue == "" || !cookieValue) {
+                throw error("Error");
+            }
             res.render('getCookie', {cookieName, cookieValue});
         } catch {
-            res.render('error', {message: "Can't find the cookie."});
+            res.render('error', {message: "404: Can't find the cookie."});
         }
     },
     setFormCookie: (req, res) => {
