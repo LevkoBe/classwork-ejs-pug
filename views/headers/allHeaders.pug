@@ -1,0 +1,17 @@
+// views/allHeaders.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title All Headers
+  body
+    h1 All Headers
+    ul
+      each header in headers
+        li
+          a(href=`/header/get/${header}`)= header
+          br
+          a(href=`/header/set?name=${header}&value=newValue`) Set
+    p
+      a(href='/') Go back to home

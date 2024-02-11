@@ -20,7 +20,7 @@ const start = async() => {
 start();
 
 app.set('view engine', 'pug');
-app.set('views', ['views', 'views/user', 'views/cookies']);
+app.set('views', ['views', 'views/user', 'views/cookies', 'views/headers']);
 
 app.use(cookieParser());
 app.use(methodOverrride('_method'));
@@ -30,7 +30,8 @@ app.use('/', require('./routes/homeRoutes'));
 app.use('/cats', require('./routes/catsRoutes'));
 app.use('/form', require('./routes/formRoutes'));
 app.use('/users', require('./routes/userRoutes'));
-app.use('/cookies', require('./routes/cookieRoutes'))
+app.use('/cookies', require('./routes/cookieRoutes'));
+app.use('/headers', require('./routes/headersRoutes'));
 app.use('/*', require('./routes/homeRoutes'));
 
 

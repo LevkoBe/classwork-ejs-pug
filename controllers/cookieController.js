@@ -14,14 +14,14 @@ const cookieController = {
             setCookie(res, cookiesSettings);
             res.redirect("/cookies")
         } catch {
-            res.render('error', {message: "404: Can't add the cookie."});
+            res.status(404).render('error', {message: "404: Can't add the cookie."});
         }
     },
     getHttpCookie: (req, res) => {
         try {
             getCookie(req, res);
         } catch {
-            res.render('error', {message: "404: Can't find the cookie."});
+            res.status(404).render('error', {message: "404: Can't find the cookie."});
         }
     },
     setFormCookie: (req, res) => {
