@@ -1,18 +1,26 @@
-p(style="font-size: 18px; color: #333;") Qty of users:
+// Style for the quantity of users
+p(style="font-size: 18px; color: #333; font-family: 'Arial', sans-serif; margin-bottom: 10px;") Qty of users:
     b= qty
 
 br
 
-ul(style="list-style-type: none;")
+// List of users
+ul(style="list-style-type: none; padding-left: 0;")
     each u in users
-        li(style="margin-bottom: 10px;") #{u.name} #{u.lastname}
-            a(href=`/users/${u._id}`, style="text-decoration: none; color: #007bff;")   =>  Go to profile
-        hl
-br
+        li(style="margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-family: 'Arial', sans-serif;")
+            // User name and lastname
+            span(style="font-weight: bold; font-family: 'Arial', sans-serif;") #{u.name} #{u.lastname}
+            // Link to user profile
+            a(href=`/users/${u._id}`, style="text-decoration: none; color: #007bff; margin-left: 10px; font-family: 'Arial', sans-serif;") Go to profile
 
 br
-a(href="/users/new", style="text-decoration: none; color: #007bff;") Add new user
+
+// Add new user link
+a(href="/users/new", style="text-decoration: none; color: #007bff; font-family: 'Arial', sans-serif;") Add new user
 br
-hl
-br
-a(href="/", style="text-decoration: none; color: #007bff;") Home page
+
+// Separator
+hr(style="margin: 20px 0;")
+
+// Home page link
+a(href="/", style="text-decoration: none; color: #007bff; font-family: 'Arial', sans-serif;") Home page

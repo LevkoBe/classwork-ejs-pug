@@ -15,9 +15,9 @@ function saveUserInDatabase(name, lastname, email, password) {
     }
 }
 
- async function updateUserfieldInDatabase(id, username) {
+ async function updateUserfieldInDatabase(id, updatedFields) {
     try {
-        return await User.findOneAndUpdate({ _id: id }, { $set: {name: username} });
+        return await User.findOneAndUpdate({ _id: id }, { $set: updatedFields });
     } catch (error) {
         console.error('error', error);
         return false;

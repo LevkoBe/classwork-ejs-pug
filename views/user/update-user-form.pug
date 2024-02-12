@@ -1,6 +1,6 @@
 h1(style="font-size: 24px; color: #333;") User update
 
-form(action=`/users/${user._id}?_method=PUT`, method="POST", style="margin-top: 20px;")
+form(action=`/users/${user._id}?_method=PATCH`, method="POST", style="margin-top: 20px;")
 
     label(for="name", style="display: block; margin-bottom: 5px;") name:
     input(type="text", value=user.name id="name", name="name", required, style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;")

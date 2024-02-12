@@ -16,10 +16,9 @@ async function getUserByIdController(req, res) {
     const userId = req.params.id;
     try {
         const user = await User.findOne({ _id: userId });
-        if (!user) { throw new Error;}
+        if (!user) { throw new Error; }
         res.render('user-profile', { user: user});
     } catch (error) {
-        console.error('Error fetching users:', error);
         res.status(500).render('error', {message: `Error fetching the user with ID ${userId}`, status: 500});
     }
 }
@@ -51,6 +50,7 @@ function postUserController(req, res) {
 function putUserController(req, res) {
     const userId = req.params.id;
     const userObj = {};
+    console.log(req.body);
     userObj.name = req.body.name;
     userObj.lastname = req.body.lastname;
     userObj.email = req.body.email;
@@ -60,10 +60,24 @@ function putUserController(req, res) {
         .catch(() => res.send('user NOT updated'));
 }
 
-function patchUserController(req, res) {
+async function patchUserController(req, res) {
     const userId = req.params.id;
-    newName = req.body.name | "New";
-    updateUserfieldInDatabase(userId, newName)
+    const user = await User.findOne({_id: userId});
+    console.log(req.body);
+    let updatedFields = {};
+    if (req.body.name !== user.name) {
+        updatedFields.name = req.body.name;
+    }
+    if (req.body.lastname!== user.lastname) {
+        updatedFields.lastname = req.body.lastname;
+    }
+    if (req.body.email!== user.email) {
+        updatedFields.email = req.body.email;
+    }
+    if (req.body.password!== user.password) {
+        updatedFields.password = req.body.password;
+    }
+    updateUserfieldInDatabase(userId, updatedFields)
         .then(() => res.redirect(`/users/${userId}`))
         .catch(() => res.send('user NOT updated'));
 }
