@@ -16,10 +16,11 @@ async function getUserByIdController(req, res) {
     const userId = req.params.id;
     try {
         const user = await User.findOne({ _id: userId });
+        if (!user) { throw new Error;}
         res.render('user-profile', { user: user});
     } catch (error) {
         console.error('Error fetching users:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).render('error', {message: `Error fetching the user with ID ${userId}`, status: 500});
     }
 }
 
