@@ -27,6 +27,7 @@ app.use(methodOverrride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', require('./routes/homeRoutes'));
+app.use('/db', require('./routes/dbRoutes'));
 app.use('/cats', require('./routes/catsRoutes'));
 app.use('/form', require('./routes/formRoutes'));
 app.use('/users', require('./routes/userRoutes'));
