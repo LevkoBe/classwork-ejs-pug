@@ -7,7 +7,7 @@ const app = express();
 
 const mongoConnection = "mongodb+srv://lbeniakh:6YdKpcWoP56wFCnW@cluster0.tdh5js4.mongodb.net/?retryWrites=true&w=majority";
 
-const PORT = 3400;
+const PORT = 3500;
 
 const start = async() => {
     await mongoose.connect(mongoConnection);
@@ -33,7 +33,9 @@ app.use('/form', require('./routes/formRoutes'));
 app.use('/users', require('./routes/userRoutes'));
 app.use('/cookies', require('./routes/cookieRoutes'));
 app.use('/headers', require('./routes/headersRoutes'));
+// app.use('/redirect', require('./routes/rediRoutes'));
 app.use('/*', require('./routes/homeRoutes'));
+
 
 
 // http://127.0.0.1:3400/cookies/set?nickname=Joe&httpOnly=true
